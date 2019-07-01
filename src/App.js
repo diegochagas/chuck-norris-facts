@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
+import { BrowserRouter, Route } from 'react-router-dom'; 
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import Header from './components/Header';
+import CategoriesList from './components/CategoriesList';
+import reducers from './reducers';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(applyMiddleware()));
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Provider store={store}>
+            <div className="App">
+                <BrowserRouter>
+                    <Header/>
+                    <div className="App-body" data-test="app">
+                        <Route path="/" exact component={CategoriesList} />
+                    </div>
+                </BrowserRouter>
+            </div>
+        </Provider>
+    );
 }
 
 export default App;
