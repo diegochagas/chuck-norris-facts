@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f935bf7c7c9bbda77d3c4997f37d7299",
+    "revision": "3070ee5d09640888c2d3b6dff730bbca",
     "url": "/chuck-norris-facts/index.html"
   },
   {
-    "revision": "e6a680fa749b3318459a",
+    "revision": "6c55fdee0547f6314812",
     "url": "/chuck-norris-facts/static/css/main.c33d04ef.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/chuck-norris-facts/static/js/2.937001eb.chunk.js"
   },
   {
-    "revision": "e6a680fa749b3318459a",
-    "url": "/chuck-norris-facts/static/js/main.1ad52546.chunk.js"
+    "revision": "6c55fdee0547f6314812",
+    "url": "/chuck-norris-facts/static/js/main.189b1a42.chunk.js"
   },
   {
     "revision": "9ba78e908fa0ae2b64fd",
