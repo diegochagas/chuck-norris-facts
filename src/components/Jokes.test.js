@@ -5,18 +5,18 @@ import { testStore, findByTestAttr } from '../utils';
 
 const setUp = (initialState = {}) => {
     const store = testStore(initialState);
-    const wrapper = shallow(<Jokes store={store}/>).childAt(0).dive();
+    const wrapper = shallow(<Jokes store={store} />).childAt(0).dive();
     return wrapper;
 }
 
-describe('Testing Joke Component', () => {
+describe('Testing Jokes Component', () => {
     let wrapper;
     beforeEach(() => {
         wrapper = setUp();
     });
 
     it('should render without errors', () => {
-       const component = findByTestAttr(wrapper, 'joke');
+       const component = findByTestAttr(wrapper, 'jokes');
        expect(component.length).toBe(1);
     });
 

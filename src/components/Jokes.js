@@ -6,22 +6,22 @@ import ProgressBar from './ProgressBar';
 import ErrorMessage from './ErrorMessage';
 import './Jokes.scss';
 
-class Jokes extends React.Component {
+const Jokes = class Jokes extends React.Component {
     constructor(props) {
         super(props);
         this.onClickLoadJoke = this.onClickLoadJoke.bind(this);
-        this.state = { jokes: [] };
     }
 
     componentDidMount() {
-        this.props.loadJoke(this.props.match.params.category);
+        const category = getCategoryProp(this.props.match);
+        this.props.loadJoke(category);
     }
 
     render() {
         const { jokes, isLoadingJokes, errorJokes } = this.props;
-        const { category } = this.props.match.params;
+        const category = getCategoryProp(this.props.match);
         return (
-            <div className="jokes" data-test="joke">
+            <div className="jokes" data-test="jokes">
                 <div className="box-title">
                     <h2>
                         <span>Jokes category: </span>
@@ -88,12 +88,14 @@ class Jokes extends React.Component {
     }
 }
 
+const getCategoryProp = match => match === undefined ? "" : match.params.category;
+
 const mapStateToProps = ({ jokes, isLoadingJokes, errorJokes }) => ({
     jokes, isLoadingJokes, errorJokes
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    loadJoke: () => dispatch(loadJoke(ownProps.match.params.category)),
+    loadJoke: () => dispatch(loadJoke(getCategoryProp(ownProps.match))),
     resetJoke: () => dispatch(resetJoke())
 });
 
