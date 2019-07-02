@@ -1,4 +1,3 @@
-import CheckPropTypes from 'check-prop-types';
 import { applyMiddleware, createStore } from 'redux';
 import rootReducer from '../reducers';
 import createSagaMiddleware from 'redux-saga';
