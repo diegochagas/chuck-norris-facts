@@ -1,0 +1,49 @@
+.categories {
+    margin: 10px auto;
+    max-width: 320px;
+    
+    &__list {
+        counter-reset: li;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        
+        &__item {
+            border-radius: 5px;
+            background-color: white;
+            display: flex;
+            position: relative;
+            padding: 5px 25px;
+            margin: 8px 0;
+            margin-left: 20px;
+            text-transform: capitalize;
+        
+            &:hover {
+                background-color: lightblue;
+                font-weight: bold;
+                color: white;
+            }
+            
+            &::before {
+                content: counter(li);
+                counter-increment: li;
+                align-items: center;
+                background-color: lightblue;
+                border: 5px solid white;
+                border-radius: 50%;
+                position: absolute;
+                color: white;
+                display: flex;
+                font-weight: bold;
+                justify-content: center;
+                margin-right: 10px;
+                height: 30px;
+                width: 30px;
+                left: -20px;
+                top: -4px;
+            }
+        }
+    }
+}

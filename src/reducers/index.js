@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux';
-import { categoriesReducer } from './categoriesReducer';
+import { categoriesReducer, loadingCategoriesReducer, errorCategoriesReducer } from './categoriesReducer';
 
 const rootReducer = combineReducers({
-    categories: categoriesReducer
+    categories: categoriesReducer,
+    isLoading: loadingCategoriesReducer,
+    error: errorCategoriesReducer
+
 });
 
 export default rootReducer;
