@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { loadJoke } from '../actions';
+import ProgressBar from './ProgressBar';
+import ErrorMessage from './ErrorMessage';
 import './Jokes.scss';
 
 class Jokes extends React.Component {
@@ -15,44 +17,51 @@ class Jokes extends React.Component {
     }
 
     render() {
+        const { jokes, isLoadingJokes, errorJokes } = this.props;
+        const { category } = this.props.match.params;
         return (
             <div className="jokes" data-test="joke">
-                <div className="category-title">
+                <div className="box-title">
                     <h2>
-                        <span>Category: </span>
-                        <span className="category-title__name">
-                            { this.props.jokes.length > 0 ? this.props.jokes[0].categories : null }
-                        </span>
+                        <span>Jokes category: </span>
+                        <span className="box-title__name">{ category }</span>
                     </h2>
                 </div>
-                <ul className="joke">
-                    { this.props.jokes.length > 0 ? this.renderJoke() : null }
-                </ul>
-                <button 
-                    onClick={this.onClickLoadJoke}
-                    className="btn"
-                >
-                    Load another joke
-                </button>
+                { jokes.length > 0 ? this.renderJoke() : null }
+                { isLoadingJokes ? (<ProgressBar />) : null }
+                { errorJokes !== null ? (<ErrorMessage message={errorJokes} />) : null }
+                { jokes.length > 0 ? this.renderLoadButton() : null }
             </div>
         );
     }
 
     renderJoke() {
-        return this.props.jokes.map((joke, index) => {
-            const { icon_url, value, updated_at } = joke;
-            return (
-                <li className="joke__item" key={index}>
-                    <div className="category-content">
-                        <span className="category-content__date">{this.formatDate(updated_at)}</span>
-                        <img src={icon_url} alt="icon url" className="category-content__icon" />
-                        <span className="category-content__description">
-                            {value}
-                        </span>
-                    </div>
-                </li>
-            );
-        });
+        return (
+            <ul className="joke">
+                {this.props.jokes.map((joke, index) => {
+                    const { icon_url, value, updated_at } = joke;
+                    return (
+                        <li className="joke__item" key={index}>
+                            <div className="category-content">
+                                <span className="category-content__date">{this.formatDate(updated_at)}</span>
+                                <img src={icon_url} alt="icon url" className="category-content__icon" />
+                                <span className="category-content__description">
+                                    {value}
+                                </span>
+                            </div>
+                        </li>
+                    );
+                })}
+            </ul>
+        );
+    }
+
+    renderLoadButton () {
+        return (
+            <button onClick={this.onClickLoadJoke} className="btn">
+                Load another joke
+            </button>
+        );
     }
 
     onClickLoadJoke() {
