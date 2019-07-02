@@ -2,7 +2,7 @@
   "name": "chuck-norris-facts",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://diegochagas.com/chuck-norris-facts",
+  "homepage": "http://diegochagas.com/chuck-norris-facts/",
   "dependencies": {
     "axios": "0.19.0",
     "node-sass": "4.12.0",
