@@ -39,11 +39,12 @@ class Jokes extends React.Component {
     }
 
     renderJoke() {
-        return this.props.jokes.map(joke => {
-            const { icon_url, value, id } = joke;
+        return this.props.jokes.map((joke, index) => {
+            const { icon_url, value, updated_at } = joke;
             return (
-                <li className="joke__item" key={id}>
+                <li className="joke__item" key={index}>
                     <div className="category-content">
+                        <span className="category-content__date">{this.formatDate(updated_at)}</span>
                         <img src={icon_url} alt="icon url" className="category-content__icon" />
                         <span className="category-content__description">
                             {value}
@@ -57,6 +58,14 @@ class Jokes extends React.Component {
     onClickLoadJoke() {
         const { category } = this.props.match.params;
         this.props.loadJoke(category);
+    }
+
+    formatDate(dateText) {
+        const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+        const date = new Date(dateText);
+        const day = `${date.getDate()}-${months[date.getMonth()]}-${date.getFullYear()}`;
+        const hour = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+        return `${day} ${hour}`;
     }
 }
 
