@@ -1,0 +1,43 @@
+.jokes {
+    max-width: 768px;
+    margin: 20px auto;
+    
+    .category-title {
+        background-color: lightblue;
+        padding: 15px 20px;
+        border-radius: 5px;
+        border: 5px solid white;
+        
+        h2 {
+            color: white;
+            margin: 0px;
+
+        }
+
+        &__name {
+            color: #268fb2;
+        }
+    }
+
+    .joke {
+        padding: 0;
+        
+        &__item {
+            background-color: white;
+            border-radius: 5px;
+            margin: 10px 0;
+            padding: 20px;
+            list-style: none;
+        }
+
+        .category-content {
+            display: flex;
+            align-items: center;
+
+            &__icon {
+                height: 100%;
+                margin-right: 10px;
+            }
+        }
+    }
+}

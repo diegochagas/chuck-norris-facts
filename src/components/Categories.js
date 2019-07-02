@@ -25,7 +25,7 @@ class Categories extends React.Component {
                 <li key={categorie}>
                     <Link 
                         className="categories__list__item" 
-                        to={`/joke/${categorie}`}
+                        to={`/jokes/${categorie}`}
                     >
                         {categorie}
                     </Link>
@@ -35,8 +35,8 @@ class Categories extends React.Component {
     }
 }
 
-const mapStateToProps = ({ categories, isLoading, error }) => ({
-    categories, isLoading, error    
+const mapStateToProps = ({ categories, isLoadingCategories, errorCategories }) => ({
+    categories, isLoadingCategories, errorCategories    
 });
 
 const mapDispatchToProps = dispatch => ({

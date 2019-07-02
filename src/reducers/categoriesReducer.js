@@ -28,7 +28,6 @@ export const loadingCategoriesReducer = (state = false, action) => {
 export const errorCategoriesReducer = (state = null, action) => {
     switch(action.type) {
         case types.CATEGORIES_LOAD_FAIL:
-            console.log(action);
             return action.payload;
         case types.CATEGORIES_LOAD:
         case types.CATEGORIES_LOAD_SUCCESS:

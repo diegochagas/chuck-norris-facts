@@ -1,5 +1,4 @@
 .App {
-    text-align: center;
 
     a {
         text-decoration: none;
@@ -7,6 +6,18 @@
 
     .App-body {
         margin: 0 20px;
+    }
+
+    .btn {
+        background-color: #268fb2;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        color: white;
+        font-weight: bold;
+        margin: 10px 0;
+        font-size: 20px;
+        text-transform: capitalize;
     }
 }
 

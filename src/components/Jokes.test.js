@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Joke from './Joke';
+import Jokes from './Jokes';
 import { testStore, findByTestAttr } from '../utils';
 
 const setUp = (initialState = {}) => {
     const store = testStore(initialState);
-    const wrapper = shallow(<Joke store={store}/>).childAt(0).dive();
+    const wrapper = shallow(<Jokes store={store}/>).childAt(0).dive();
     return wrapper;
 }
 
