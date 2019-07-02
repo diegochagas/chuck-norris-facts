@@ -13,7 +13,7 @@ function App() {
     return (
         <Provider store={store}>
             <div className="App">
-                <BrowserRouter>
+                <BrowserRouter basename={process.env.PUBLIC_URL}>
                     <Header/>
                     <div className="App-body" data-test="app">
                         <Route path="/" exact component={Categories} />
