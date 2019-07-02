@@ -1,13 +1,11 @@
 import types from '../actions/types';
 
-export const INITIAL_STATE = {
-    jokes: []
-}
-
 export const jokesReducer = (state = [], action) => {
     switch(action.type) {
         case types.JOKE_LOAD_SUCCESS:
             return [...state, action.payload];
+        case types.JOKE_RESET:
+            return [];
         default:
             return state;
     }

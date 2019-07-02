@@ -16,7 +16,7 @@ class Categories extends React.Component {
         return (
             <div className="categories" data-test="categories">
                 <div className="box-title">
-                    <h2>Categorys</h2>
+                    <h2>Categories</h2>
                 </div>
                 { categories.length > 0 ? this.renderCategories(): null }
                 { isLoadingCategories ? (<ProgressBar/>) : null }

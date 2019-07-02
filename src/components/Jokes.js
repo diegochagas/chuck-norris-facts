@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loadJoke } from '../actions';
+import { Link } from 'react-router-dom';
+import { loadJoke, resetJoke } from '../actions';
 import ProgressBar from './ProgressBar';
 import ErrorMessage from './ErrorMessage';
 import './Jokes.scss';
@@ -30,7 +31,7 @@ class Jokes extends React.Component {
                 { jokes.length > 0 ? this.renderJoke() : null }
                 { isLoadingJokes ? (<ProgressBar />) : null }
                 { errorJokes !== null ? (<ErrorMessage message={errorJokes} />) : null }
-                { jokes.length > 0 ? this.renderLoadButton() : null }
+                { jokes.length > 0 ? this.renderButtons() : null }
             </div>
         );
     }
@@ -56,11 +57,20 @@ class Jokes extends React.Component {
         );
     }
 
-    renderLoadButton () {
+    renderButtons () {
         return (
-            <button onClick={this.onClickLoadJoke} className="btn">
-                Load another joke
-            </button>
+            <div className="buttons">
+                <button onClick={this.onClickLoadJoke} className="btn">
+                    Load another joke
+                </button>
+                <Link 
+                    to="/" 
+                    className="btn btn-secondary" 
+                    onClick={this.props.resetJoke}
+                >
+                    Back
+                </Link>
+            </div>
         );
     }
 
@@ -83,7 +93,8 @@ const mapStateToProps = ({ jokes, isLoadingJokes, errorJokes }) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    loadJoke: () => dispatch(loadJoke(ownProps.match.params.category))
+    loadJoke: () => dispatch(loadJoke(ownProps.match.params.category)),
+    resetJoke: () => dispatch(resetJoke())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Jokes);

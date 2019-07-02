@@ -24,6 +24,11 @@ export const setJoke = joke => ({
     payload: joke
 });
 
+export const resetJoke = joke => ({
+    type: types.JOKE_RESET,
+    payload: joke
+});
+
 export const setErrorJoke = error => ({
     type: types.JOKE_LOAD_FAIL,
     payload: error

@@ -8,6 +8,10 @@
         margin: 0 20px;
     }
 
+    .buttons {
+        display: flex;
+    }
+
     .btn {
         background-color: #268fb2;
         border: none;
@@ -15,9 +19,13 @@
         padding: 10px;
         color: white;
         font-weight: bold;
-        margin: 10px 0;
+        margin: 10px 5px;
         font-size: 16px;
         text-transform: uppercase;
+    }
+
+    .btn-secondary {
+        background-color: gray;
     }
 
     .box-title {
