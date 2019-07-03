@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/chuck-norris-facts/static/css/main.43bd56ae.chunk.css",
-    "main.js": "/chuck-norris-facts/static/js/main.9529871b.chunk.js",
-    "main.js.map": "/chuck-norris-facts/static/js/main.9529871b.chunk.js.map",
+    "main.js": "/chuck-norris-facts/static/js/main.ccc8b654.chunk.js",
+    "main.js.map": "/chuck-norris-facts/static/js/main.ccc8b654.chunk.js.map",
     "runtime~main.js": "/chuck-norris-facts/static/js/runtime~main.f9801307.js",
     "runtime~main.js.map": "/chuck-norris-facts/static/js/runtime~main.f9801307.js.map",
-    "static/js/2.8e1edce1.chunk.js": "/chuck-norris-facts/static/js/2.8e1edce1.chunk.js",
-    "static/js/2.8e1edce1.chunk.js.map": "/chuck-norris-facts/static/js/2.8e1edce1.chunk.js.map",
+    "static/js/2.3cf5a770.chunk.js": "/chuck-norris-facts/static/js/2.3cf5a770.chunk.js",
+    "static/js/2.3cf5a770.chunk.js.map": "/chuck-norris-facts/static/js/2.3cf5a770.chunk.js.map",
     "index.html": "/chuck-norris-facts/index.html",
-    "precache-manifest.643101fcb43a820af61038f72ef28df6.js": "/chuck-norris-facts/precache-manifest.643101fcb43a820af61038f72ef28df6.js",
+    "precache-manifest.23aa0c73696f29c799c15d4e37476210.js": "/chuck-norris-facts/precache-manifest.23aa0c73696f29c799c15d4e37476210.js",
     "service-worker.js": "/chuck-norris-facts/service-worker.js",
     "static/css/main.43bd56ae.chunk.css.map": "/chuck-norris-facts/static/css/main.43bd56ae.chunk.css.map",
     "static/media/logo.svg": "/chuck-norris-facts/static/media/logo.95605289.svg"
