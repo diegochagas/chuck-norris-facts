@@ -11,3 +11,25 @@ export const testStore = initialState => {
     const createStoreWithMiddleWare = applyMiddleware(createSagaMiddleware)(createStore);
     return createStoreWithMiddleWare(rootReducer, initialState);
 }
+
+export const getInitialState = () => {
+    const INITIAL_STATE = {
+        categories: [""], 
+        isLoadingCategories: false, 
+        errorCategories: null, 
+        jokes: [
+            {
+                categories: [""], 
+                created_at: "",
+                icon_url: "",
+                id: "",
+                updated_at: "",
+                url: "",
+                value: ""
+            }
+        ], 
+        isLoadingJokes: false, 
+        errorJokes: null
+    };
+    return INITIAL_STATE;
+}
