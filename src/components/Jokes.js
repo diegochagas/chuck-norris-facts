@@ -5,6 +5,7 @@ import { loadJoke, resetJoke } from '../actions';
 import ProgressBar from './ProgressBar';
 import ErrorMessage from './ErrorMessage';
 import './Jokes.scss';
+import WarningMessage from './WarningMessage';
 
 const Jokes = class Jokes extends React.Component {
     constructor(props) {
@@ -24,10 +25,8 @@ const Jokes = class Jokes extends React.Component {
     componentWillReceiveProps(nextProps) {
         if(this.isSameJoke(nextProps)) {
             this.numberOfCallsToTheSameJoke++;
-            if (this.numberOfCallsToTheSameJoke <= 5) {
-                console.log(`same joke: ${this.numberOfCallsToTheSameJoke}`);
-            } else {
-                console.log('more then five');
+            if (this.numberOfCallsToTheSameJoke <= 10) {
+                this.onLoadJoke();
             }
         }
     }
@@ -46,6 +45,12 @@ const Jokes = class Jokes extends React.Component {
                 { jokes.length > 0 ? this.renderJoke() : null }
                 { isLoadingJokes ? (<ProgressBar />) : null }
                 { errorJokes !== null ? (<ErrorMessage message={errorJokes} />) : null }
+                { this.numberOfCallsToTheSameJoke > 10 ? (
+                    <WarningMessage
+                        title={"Sorry!"}
+                        message={"We probably don't have more jokes about this category."} 
+                    />
+                ) : null }
                 { jokes.length > 0 ? this.renderButtons() : null }
             </div>
         );
