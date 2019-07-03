@@ -34,6 +34,7 @@ class Categories extends React.Component {
                             <Link 
                                 className="categories__list__item" 
                                 to={`/jokes/${categorie}`}
+                                data-test="category"
                             >
                                 {categorie}
                             </Link>
