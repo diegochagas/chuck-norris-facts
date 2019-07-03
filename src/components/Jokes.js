@@ -9,12 +9,27 @@ import './Jokes.scss';
 const Jokes = class Jokes extends React.Component {
     constructor(props) {
         super(props);
-        this.onClickLoadJoke = this.onClickLoadJoke.bind(this);
+        this.onLoadJoke = this.onLoadJoke.bind(this);
+        this.numberOfCallsToTheSameJoke = 0;
     }
 
     componentDidMount() {
-        const category = getCategoryProp(this.props.match);
-        this.props.loadJoke(category);
+        this.onLoadJoke();
+    }
+
+    componentWillUnmount() {
+        this.props.resetJoke();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(this.isSameJoke(nextProps)) {
+            this.numberOfCallsToTheSameJoke++;
+            if (this.numberOfCallsToTheSameJoke <= 5) {
+                console.log(`same joke: ${this.numberOfCallsToTheSameJoke}`);
+            } else {
+                console.log('more then five');
+            }
+        }
     }
 
     render() {
@@ -39,10 +54,10 @@ const Jokes = class Jokes extends React.Component {
     renderJoke() {
         return (
             <ul className="joke">
-                {this.props.jokes.map((joke, index) => {
-                    const { icon_url, value, updated_at } = joke;
+                {this.props.jokes.map(joke => {
+                    const { icon_url, id, updated_at, value } = joke;
                     return (
-                        <li className="joke__item" key={index}>
+                        <li className="joke__item" key={id} data-test="joke">
                             <div className="category-content">
                                 <span className="category-content__date">{this.formatDate(updated_at)}</span>
                                 <img src={icon_url} alt="icon url" className="category-content__icon" />
@@ -60,13 +75,12 @@ const Jokes = class Jokes extends React.Component {
     renderButtons () {
         return (
             <div className="buttons">
-                <button onClick={this.onClickLoadJoke} className="btn">
+                <button onClick={this.onLoadJoke} className="btn">
                     Load another joke
                 </button>
                 <Link 
                     to="/" 
-                    className="btn btn-secondary" 
-                    onClick={this.props.resetJoke}
+                    className="btn btn-secondary"
                 >
                     Back
                 </Link>
@@ -74,17 +88,27 @@ const Jokes = class Jokes extends React.Component {
         );
     }
 
-    onClickLoadJoke() {
-        const { category } = this.props.match.params;
+    onLoadJoke() {
+        const { category } = getCategoryProp(this.props.match);
         this.props.loadJoke(category);
     }
 
     formatDate(dateText) {
         const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
         const date = new Date(dateText);
+        if (Object.prototype.toString.call(date) !== "[object Date]" || isNaN(date.getTime())) {
+            return "";
+        }
         const day = `${date.getDate()}-${months[date.getMonth()]}-${date.getFullYear()}`;
         const hour = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
         return `${day} ${hour}`;
+    }
+
+    isSameJoke (nextProps) {
+        const noErrors = nextProps.errorJokes === null;
+        const notAreLoading  = nextProps.isLoadingJokes === false;
+        const sameJokes = nextProps.jokes.length === this.props.jokes.length;
+        return noErrors && notAreLoading && sameJokes;
     }
 }
 

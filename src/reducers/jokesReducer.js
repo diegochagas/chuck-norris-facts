@@ -3,7 +3,10 @@ import types from '../actions/types';
 export const jokesReducer = (state = [], action) => {
     switch(action.type) {
         case types.JOKE_LOAD_SUCCESS:
-            return [...state, action.payload];
+            let index = state.findIndex(joke => joke.id === action.payload.id);
+            if (index === -1)
+                return [...state, action.payload];
+            return state;
         case types.JOKE_RESET:
             return [];
         default:
